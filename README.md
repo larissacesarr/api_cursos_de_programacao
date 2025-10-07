@@ -217,4 +217,4 @@ http://localhost:8080
 ## 👩‍💻 Autora
 
 Desenvolvido com 💜 por **[Larissa Cesar](https://github.com/larissacesarr)**  
-Estudante de Engenharia de Software e apaixonada por desenvolvimento backend e boas práticas em APIs RESTful. 🚀
+Desenvolvedora de Software e apaixonada por desenvolvimento backend e boas práticas em APIs RESTful. 🚀
