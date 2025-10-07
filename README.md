@@ -49,7 +49,7 @@ Cada curso contém as seguintes propriedades:
 ## 🧭 Rotas da API
 
 ### ➕ Criar curso  
-`POST /cursos`
+`POST /course/`
 
 **Body exemplo:**
 ```json
@@ -65,7 +65,7 @@ Cada curso contém as seguintes propriedades:
 ---
 
 ### 📋 Listar cursos  
-`GET /cursos`
+`GET /course`
 
 Lista todos os cursos cadastrados no banco.  
 Também é possível filtrar por `name` e/ou `category`:
@@ -78,7 +78,7 @@ GET /cursos?category=Front end
 ---
 
 ### ✏️ Atualizar curso  
-`PUT /cursos/:id`
+`PUT /course/:id`
 
 **Body exemplo:**
 ```json
@@ -94,21 +94,12 @@ GET /cursos?category=Front end
 ---
 
 ### 🔄 Alterar status (ativo/inativo)  
-`PATCH /cursos/:id/active`
+`PATCH /course/:id/active`
 
 Essa rota realiza o **toggle** do status entre `ATIVO` e `INATIVO`.
 
-**Resposta exemplo:**
-```json
-{
-  "message": "Status do curso atualizado para INATIVO"
-}
-```
-
----
-
 ### ❌ Remover curso  
-`DELETE /cursos/:id`
+`DELETE /course/:id`
 
 Remove o curso do banco de dados.
 
@@ -131,14 +122,18 @@ O projeto utiliza **Docker** para subir o ambiente do banco de dados, facilitand
 
 ### 📁 Estrutura de Arquivos Docker
 
-- `Dockerfile` → Define o ambiente e dependências da aplicação.
-- `docker-compose.yml` → (caso tenha sido utilizado) Configura os serviços (ex: banco de dados, app).
+- `docker-compose.yml` → Configura os serviços (ex: banco de dados, app).
 
 ### 🏗️ Subindo o ambiente
 
+### 1️⃣ Build da imagem
 ```bash
-# Build e inicialização do container
-docker-compose up --build
+docker build -t spring-backend .
+```
+
+### 2️⃣ Subir os containers
+```bash
+docker-compose up -d
 ```
 
 ### 📦 Banco de Dados
@@ -150,32 +145,31 @@ A aplicação se conecta automaticamente ao banco conforme as variáveis de ambi
 
 ## ⚙️ Tecnologias Utilizadas
 
-- **Node.js**
-- **Express**
-- **Docker**
+- **Java 17+**
+- **Spring Boot 3+**
+- **Spring Data JPA**
 - **PostgreSQL**
-- **Sequelize / Prisma**
-- **UUID**
-- **Nodemon**
+- **Docker & Docker Compose**
+- **Maven**
+- **UUID** para identificação única de registros
 
 ---
 
 ## 🧩 Estrutura do Projeto
 
 ```
-api_cursos_de_programacao/
-│
-├── src/
-│   ├── controllers/       # Lógica das rotas
-│   ├── models/            # Modelos e entidades
-│   ├── routes/            # Definição das rotas da API
-│   ├── enums/             # Enum de status (ATIVO / INATIVO)
-│   └── database/          # Configuração e conexão com o banco
-│
-├── Dockerfile
-├── package.json
-├── .env
-└── README.md
+src/
+ ├── main/
+ │   ├── java/
+ │   │   └── com/seuprojeto/
+ │   │       ├── controller/
+ │   │       ├── entity/
+ │   │       ├── repository/
+ │   │       ├── service/
+ │   │       └── enums/
+ │   └── resources/
+ │       ├── application.yml
+ └── test/
 ```
 
 ---
@@ -183,8 +177,10 @@ api_cursos_de_programacao/
 ## ▶️ Como Executar o Projeto Localmente
 
 ### Requisitos
-- Node.js 18+
+- Java 17+
+- Maven
 - Docker e Docker Compose
+- PostgreSQL (rodando via Docker ou localmente)
 
 ### Passos
 
@@ -195,30 +191,26 @@ git clone https://github.com/larissacesarr/api_cursos_de_programacao.git
 # Acessar o diretório do projeto
 cd api_cursos_de_programacao
 
-# Instalar dependências
-npm install
-
 # Subir containers do banco
 docker-compose up -d
 
-# Rodar o servidor em modo desenvolvimento
-npm run dev
+# Compilar o projeto
+mvn clean install
+
+# Executar a aplicação
+mvn spring-boot:run
 ```
 
 A API estará disponível em:
 ```
-http://localhost:3333
+http://localhost:8080
 ```
 
----
+## 🧠 Observações
 
-## 💡 Possíveis Melhorias Futuras
-
-- Adicionar autenticação JWT.
-- Implementar testes automatizados (Jest / Supertest).
-- Adicionar paginação e ordenação na listagem.
-- Documentar rotas com Swagger.
-- Criar seeders e migrations automatizadas.
+- As configurações do banco (usuário, senha, porta, etc.) podem ser ajustadas no arquivo application.properties.
+- Certifique-se de que o Docker está em execução antes de iniciar o Spring Boot.
+- As tabelas e colunas serão criadas automaticamente via JPA (Hibernate).
 
 ---
 
