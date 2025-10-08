@@ -11,11 +11,11 @@ O sistema foi construído seguindo os princípios do **CRUD**, permitindo o gere
 
 A API oferece as seguintes operações:
 
-- **Criar um novo curso** (`POST /cursos`)
-- **Listar todos os cursos** e filtrar por nome ou categoria (`GET /cursos`)
-- **Atualizar informações de um curso** (`PUT /cursos/:id`)
-- **Remover um curso existente** (`DELETE /cursos/:id`)
-- **Ativar ou inativar um curso** (`PATCH /cursos/:id/active`)
+- **Criar um novo curso** (`POST /course`)
+- **Listar todos os cursos** e filtrar por nome ou categoria (`GET /course`)
+- **Atualizar informações de um curso** (`PUT /course/:id`)
+- **Remover um curso existente** (`DELETE /course/:id`)
+- **Ativar ou inativar um curso** (`PATCH /course/:id/active`)
 
 ---
 
