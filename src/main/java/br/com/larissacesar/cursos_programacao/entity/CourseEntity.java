@@ -30,8 +30,8 @@ public class CourseEntity {
     private String category;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = true)
-    private CourseStatus status;
+    @Column(nullable = false)
+    private CourseStatus status = CourseStatus.ATIVO;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
