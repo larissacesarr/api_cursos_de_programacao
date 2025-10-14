@@ -200,11 +200,14 @@ mvn clean install
 # Executar a aplicação
 mvn spring-boot:run
 ```
+## ▶️ Acessando a Documentação da API (Swagger)
 
-A API estará disponível em:
-```
-http://localhost:8080
-```
+Para visualizar e testar os endpoints da API via Swagger:
+
+1. Certifique-se de que o projeto esteja rodando localmente.
+2. Abra o navegador e acesse a seguinte URL:
+
+   http://localhost:8080/swagger-ui/index.html
 
 ## 🧠 Observações
 
