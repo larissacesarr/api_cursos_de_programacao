@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(CourseNotFoundException.class)
-    public ResponseEntity<String> handleCourseNotFoundException(GlobalExceptionHandler ex) {
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<String> handleCourseNotFoundException(CourseNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 }
